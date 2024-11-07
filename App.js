@@ -1,17 +1,17 @@
 // require('dotenv').config()
 require('colors')
 const Db=require("./Database/Connection")
-// const helmet = require("helmet");
 const express = require('express');
 const app = express();
 const port = 3000 || process.env.port
 const bodyParser = require('body-parser');
 const userApi = require('./Routes/user');
-const coinApi = require('./Routes/crypto');
-
+const VideoApi = require('./Routes/portfolio/videos');
+const GraphicApi = require('./Routes/portfolio/graphics');
+const FaqsApi = require('./Routes/portfolio/faqs');
+const EmailApi = require('./Routes/portfolio/leadEmail');
 const cookieParser = require('cookie-parser');
 const path = require('path')
-
 const cors=require("cors")
 const morgan = require("morgan");
 
@@ -58,7 +58,10 @@ app.use(bodyParser.json());
 
 // Routes Api
 app.use('/api/v1/user', userApi);
-app.use('/api/v1', coinApi);
+app.use('/api/v1/video', VideoApi);
+app.use('/api/v1/graphic', GraphicApi);
+app.use('/api/v1/faqs', FaqsApi);
+app.use('/api/v1/leademail', EmailApi);
 
 // testing endpoint
 app.get('/api/v1',function (req,res){  

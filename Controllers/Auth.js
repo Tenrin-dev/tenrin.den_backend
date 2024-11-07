@@ -9,6 +9,7 @@ const registerModel = require('../models/register')
 const Register= async(req,res)=>{
     try{
         const {name,email,phone,password}=req.body
+        console.log("Good",req.body)
         if(name && email && password){
 
             const bPassword = await bcrypt.hash(password,10)
