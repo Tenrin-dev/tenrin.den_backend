@@ -69,6 +69,14 @@ app.get('/api/v1',function (req,res){
   res.status(200).json({msg:'Connection Established'});
 })
 
+app.get('/api/v1/blogs',async function (req,res){  
+  const mediumURL = "https://www.toptal.com/developers/feed2json/convert?url=https%3A%2F%2Fmedium.com%2Ffeed%2F%40tenrin";
+  const response = await fetch(mediumURL);
+  const json = await response.json()
+  console.log(json)
+  res.status(200).json({msg:'Connection Established',data:json});
+})
+
 
 // Start server
 app.listen(port, () => {
