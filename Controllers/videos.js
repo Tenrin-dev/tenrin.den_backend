@@ -21,7 +21,7 @@ const AddNewVideo = async(req,res)=>{
     try{
 
       const {url,poster,description} = req.body;
-     console.log("hello", req.body)
+    //  console.log("hello", req.body)
      const data = new videoModel( {url,poster,description})
     const response = await data.save();
     if(response){
